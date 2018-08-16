@@ -8,19 +8,19 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="text-center">
-                    <span style="font-size:24px;">リスティング写真の編集</span>
+                    <span style="font-size:24px;">貸し出し写真の編集</span>
                 </div>
             </div>
 
-            <div class="panel-body">          
-                <%= form_for @photo, html:{multipart: true,class:"dropzone", id:"my-dropzone", required: "true" } do |f| %> 
-                    
+            <div class="panel-body">
+                <%= form_for @photo, html:{multipart: true,class:"dropzone", id:"my-dropzone", required: "true" } do |f| %>
+
                     <%= f.hidden_field :listing_id, value: @listing.id %>
                     <div class="dz-message needsclick">
                         <h3>ファイルをここにドロップしてください。</h3>
                         <strong>アップロードするにはここをクリックしてください</strong>
                     </div>
-                    
+
                     <div class="fallback">
                         <%= f.file_field :image %>
                         <%= f.submit "Upload image" %>
@@ -38,11 +38,11 @@
   //photos_controller.rbのcreateアクションが呼ばれる
   $("#my-dropzone").dropzone({
     maxFilesize: 200,// MB
-    addRemoveLinks: true,//削除リンク,Cancelリンクを全てのpreviewファイルに付ける。 
+    addRemoveLinks: true,//削除リンク,Cancelリンクを全てのpreviewファイルに付ける。
     paramName: 'photo[image]',// パラメータの名前
     success: function(file, response) {
       // file.previewElementでpreview要素のhtmlにアクセスできる
-      //add .dz-success class to file.previewElement 
+      //add .dz-success class to file.previewElement
       $(file.previewElement).addClass('dz-success');
       //add response.uploadId to .dz-remove class
       $(file.previewElement).find('.dz-remove').attr('id', response.photoId);
@@ -74,7 +74,7 @@
       //meに"complete"イベントを定義
       me.on("complete", function(file) {
        $(file.previewTemplate).find('.dz-remove').text("削除する");
-      }); 
+      });
       //call list function in photos_controller.rb with get method
       $.ajax({
        type: "GET",

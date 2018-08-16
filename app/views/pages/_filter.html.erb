@@ -1,6 +1,6 @@
 <!-- Search Form -->
 <%= search_form_for @search, url: search_path do |f| %>
- 
+
   <div class="filter">
 
     <!-- カレンダー -->
@@ -30,25 +30,25 @@
         <%= f.text_field :price_pernight_lteq, placeholder: "Max",value:session[:price_pernight_lteq],class:"form-control" %>
       </div>
     </div>
-    
+
     <!-- 家の形態 -->
     <div class="row filter-section row-space-top-4 row-space-4">
 
       <div class="col-md-3 text-center">
         <h4>家のタイプ</h4>
       </div>
-      
+
       <div class="col-md-3 col-xs-4">
-        <%= check_box_tag "q[home_type_eq_any][]", "マンション",session[:Mansion] %> マンション
+        <%= check_box_tag "q[home_type_eq_any][]", "海の見える部屋",session[:Mansion] %> 海の見える部屋
       </div>
       <div class="col-md-3 col-xs-4">
-        <%= check_box_tag "q[home_type_eq_any][]", "一軒家",session[:House] %> 一軒家
+        <%= check_box_tag "q[home_type_eq_any][]", "マリンレジャー・乗り物",session[:House] %> マリンレジャー・乗り物
       </div>
       <div class="col-md-3 col-xs-4">
-        <%= check_box_tag "q[home_type_eq_any][]", "アパート",session[:Apartment]%> アパート
+        <%= check_box_tag "q[home_type_eq_any][]", "遊びのパートナー",session[:Apartment]%> 遊びのパートナー
       </div>
     </div>
-    
+
     <!-- ペットタイプ -->
     <div class="row filter-section">
       <div class="col-md-3 col-xs-6 text-center">
@@ -56,7 +56,7 @@
       </div>
       <div class="col-md-3 col-xs-6">
         <div class="form-group">
-          <%= f.select :pet_type_eq, [["犬","犬"], ["猫","猫"], ["鳥類","鳥類"], ["爬虫類","爬虫類"], ["魚類","魚類"], ["両生類","両生類"], ["その他","その他"]], { :include_blank => "Select",:selected => session[:pet_type_eq]},{class: "form-control"} %>
+          <%= f.select :pet_type_eq, [["マリンレジャー・乗り物","マリンレジャー・乗り物"], ["海の見える部屋","海の見える部屋"], ["遊びのパートナー","遊びのパートナー"]], { :include_blank => "Select",:selected => session[:pet_type_eq]},{class: "form-control"} %>
         </div>
       </div>
 
@@ -68,15 +68,15 @@
           <%= f.select :breeding_years_gteq, [["1year",1], ["2",2], ["3",3], ["4",4], ["5",5], ["6",6]], {:include_blank => "Select",:selected => session[:breeding_years_gteq]}, {class: 'form-control'} %>
         </div>
       </div>
-  
+
     </div>
-    
+
     <!-- Submitボタン -->
     <div class="row filter-section">
       <div class="col-md-3">
         <%= f.submit "Re-search", class: "btn btn-danger" %>
       </div>
-    </div>    
+    </div>
   </div>
 <% end %>
 

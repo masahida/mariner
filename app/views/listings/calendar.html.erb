@@ -13,13 +13,13 @@
         </div>
       </div>
 
-      <div class="panel-body">      
+      <div class="panel-body">
 
         <!-- datepicker Calendar -->
         <%= form_for([@listing, @listing.reservations.new]) do |f| %>
           <div class="row row-space-top-4">
             <div class="col-md-8 col-md-offset-2 calendar">
-              <label>預かりができない日を指定</label>
+              <label>貸し出しができない日を指定</label>
               <div id="datepicker"></div>
             </div>
           </div>
@@ -29,8 +29,8 @@
           <!-- 隠し要素として"listing_id"をおくる -->
           <%= f.hidden_field :listing_id, value: @listing.id %>
           <%= f.hidden_field :selectedDates, value: "",id:"selectedDates" %>
-          
-  
+
+
           <div class="actions">
             <%= f.submit "更新", class: "btn btn-danger" %>
           </div>
@@ -67,9 +67,9 @@ function removeDate(index){
 // 選択された日付がすでに"selectedDates"にあれば、削除。なければ追加
 function addOrRemoveDate(date) {
     var index = jQuery.inArray(date, selectedDates);
-    if (index >= 0) 
+    if (index >= 0)
       removeDate(index);
-    else 
+    else
       addDate(date);
 }
 
@@ -97,7 +97,7 @@ $(function () {
     dataType: 'json',
     // callback argument: data is the response data
     success: function(data){
-   
+
       $.each(data,function(arrID,arrValue){
         //自分で予約した日付"selectedDates[]"と他人が予約した日付"disabledDates[]"をわけてpushしなきゃいけない
         for(var d = new Date(arrValue.start_date); d <= new Date(arrValue.end_date); d.setDate(d.getDate() + 1 )){
@@ -108,8 +108,8 @@ $(function () {
             $('#selectedDates').val(selectedDates);
           }else{
             disabledDates.push($.datepicker.formatDate('d-m-yy',d));
-          }            
-        }       
+          }
+        }
       });
 
       $("#datepicker").datepicker({
